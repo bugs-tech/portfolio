@@ -23,12 +23,7 @@
       overflow-x:hidden;
     }
 
-    #particles, #matrix {
-      position:fixed; inset:0; z-index:0; pointer-events:none;
-    }
-    #particles { opacity:0.55; }
-    #matrix { opacity:0.25; }
-
+    #particles{position:fixed; inset:0; z-index:0; pointer-events:none; opacity:0.55}
     .wrap{position:relative; z-index:1; max-width:1000px; margin:0 auto; padding:56px 24px}
     header{display:flex; align-items:center; justify-content:space-between; gap:16px}
     .brand{font-weight:800; letter-spacing:-0.5px}
@@ -81,7 +76,6 @@
 </head>
 <body>
   <canvas id="particles"></canvas>
-  <canvas id="matrix"></canvas>
 
   <div class="wrap">
     <header>
@@ -121,27 +115,32 @@
             <h3>BUGS-BOT V1</h3>
             <p>WhatsApp automation bot with moderation, media commands and YT downloads.</p>
           </article>
+
           <article class="proj reveal">
             <h3>PairGen</h3>
             <p>Telegram tool to generate WhatsApp pairing sessions for users (Baileys).</p>
           </article>
+
           <article class="proj reveal">
             <h3>Home Network Planner</h3>
             <p>Network layout & wiring plan for a multi-floor house with VLAN recommendations.</p>
           </article>
+
           <article class="proj reveal">
             <h3>School Management System</h3>
             <p>Desktop application to manage student records, grades, schedules, and staff data efficiently.</p>
           </article>
+
           <article class="proj reveal">
             <h3>Pharmacy Drug Alert System</h3>
             <p>Automated system to monitor drug stock, expiration dates, and send timely alerts to pharmacists.</p>
           </article>
+
           <article class="proj reveal">
             <h3>BUGS-BOT V2 (Under Development)</h3>
             <p>Advanced bot with real-time responses, integrations, and custom automation features.</p>
           </article>
-		  <article class="proj reveal">
+			<article class="proj reveal">
             <h3>CAMERA INSTALLATION</h3>
             <p>Having the required skills to manage a full project camera installation</p>
           </article>
@@ -167,7 +166,6 @@
   </div>
 
   <script>
-    // Typewriter
     const phrases = ["WhatsApp bots.", "Automation tools.", "Clean code."];
     let i = 0, j = 0, forward = true;
     const el = document.getElementById('typewriter');
@@ -180,7 +178,6 @@
     }
     tick();
 
-    // Particles
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
     let W = canvas.width = innerWidth;
@@ -193,7 +190,14 @@
     function init(){
       particles = [];
       for(let k=0;k<NUM;k++){
-        particles.push({x: Math.random()*W,y: Math.random()*H,r: rand(0.6,2.4),vx: rand(-0.25,0.25),vy: rand(-0.15,0.15),alpha: rand(0.08,0.26)});
+        particles.push({
+          x: Math.random()*W,
+          y: Math.random()*H,
+          r: rand(0.6,2.4),
+          vx: rand(-0.25,0.25),
+          vy: rand(-0.15,0.15),
+          alpha: rand(0.08,0.26)
+        });
       }
     }
     function update(){
@@ -228,44 +232,24 @@
     }
     init(); update();
 
-    // Matrix Rain Animation
-    const matrix = document.getElementById('matrix');
-    const mctx = matrix.getContext('2d');
-    matrix.width = window.innerWidth;
-    matrix.height = window.innerHeight;
-    const letters = "アァイィウヴエェオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハバパヒビピフブプホボポマミムメモヤユヨラリルレロワヰヱヲンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    const fontSize = 14;
-    const columns = matrix.width / fontSize;
-    let drops = [];
-    for(let x=0;x<columns;x++) drops[x]=1;
-
-    function drawMatrix(){
-      mctx.fillStyle="rgba(0,0,0,0.07)";
-      mctx.fillRect(0,0,matrix.width,matrix.height);
-      mctx.fillStyle="#0f0";
-      mctx.font=fontSize+"px monospace";
-      for(let i=0;i<drops.length;i++){
-        const text = letters.charAt(Math.floor(Math.random()*letters.length));
-        mctx.fillText(text,i*fontSize,drops[i]*fontSize);
-        if(drops[i]*fontSize>matrix.height && Math.random()>0.975){ drops[i]=0 }
-        drops[i]++;
-      }
-    }
-    setInterval(drawMatrix,50);
-
-    // Reveal on scroll
     const obs = new IntersectionObserver((entries)=>{
-      for(const e of entries){ if(e.isIntersecting) e.target.classList.add('visible'); }
+      for(const e of entries){
+        if(e.isIntersecting) e.target.classList.add('visible');
+      }
     }, {threshold:0.12});
     document.querySelectorAll('.reveal').forEach(n=>obs.observe(n));
 
     document.getElementById('year').textContent = new Date().getFullYear();
+
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click', (ev)=>{
         const id = a.getAttribute('href');
-        if(id.length>1){ ev.preventDefault(); document.querySelector(id).scrollIntoView({behavior:'smooth'}); }
+        if(id.length>1){
+          ev.preventDefault();
+          document.querySelector(id).scrollIntoView({behavior:'smooth', block:'start'});
+        }
       });
     });
   </script>
 </body>
-</html>
+</html>( let be only one file)
