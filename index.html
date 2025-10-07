@@ -3,253 +3,283 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ngoulla Morel — Portfolio</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
+  <title>Morel Tiossok Ngoulla — Web CV</title>
+  <meta name="description" content="Web CV / profile for Morel Tiossok Ngoulla — Software Engineer / Network Admin / IT" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg1:#0f172a; --bg2:#0f2540; --accent:#7c3aed;
-      --glass: rgba(255,255,255,0.06);
-      --card: rgba(255,255,255,0.03);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      background: linear-gradient(180deg,var(--bg1),var(--bg2));
-      color:#e6eef8; -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      overflow-x:hidden;
+      --accent:#0ea5a4;
+      --accent-light:#6366f1;
+      --muted:#6b7280;
+      --bg:#f9fafb;
+      --text:#111827;
+      --card:#ffffff;
+      --glass:rgba(0,0,0,0.05);
+      --glass-2:rgba(0,0,0,0.03);
+      --white:#ffffff;
+      --nav-height:64px;
     }
 
-    #particles{position:fixed; inset:0; z-index:0; pointer-events:none; opacity:0.55}
-    .wrap{position:relative; z-index:1; max-width:1000px; margin:0 auto; padding:56px 24px}
-    header{display:flex; align-items:center; justify-content:space-between; gap:16px}
-    .brand{font-weight:800; letter-spacing:-0.5px}
-    nav a{color:inherit; text-decoration:none; margin-left:18px; opacity:0.9}
-    nav a:hover{opacity:1; text-decoration:underline}
-
-    .hero{display:flex; align-items:center; gap:30px; margin-top:40px}
-    .hero-left{flex:1}
-    .title{font-size:clamp(28px,5vw,44px); margin:0 0 8px}
-    .subtitle{margin:0 0 18px; color:#bcd2ff; font-weight:300}
-    .typewriter{color:var(--accent); font-weight:600}
-
-    .cta{display:inline-block; padding:10px 16px; background:linear-gradient(90deg,var(--accent),#5eead4);
-         color:#041024; border-radius:10px; text-decoration:none; font-weight:700; transition:transform .2s ease}
-    .cta:hover{transform:scale(1.05)}
-
-    .card{width:220px; padding:18px; background:var(--glass); border-radius:14px; backdrop-filter:blur(6px);
-         box-shadow:0 6px 22px rgba(2,6,23,0.6); text-align:center}
-    .avatar{width:84px; height:84px; border-radius:50%; object-fit:cover; border:3px solid rgba(255,255,255,0.06)}
-    .small{font-size:13px; color:#cbd9ff}
-    .btn-group{margin-top:12px; display:flex; flex-direction:column; gap:8px}
-    .btn{padding:8px; background:var(--accent); border-radius:8px; text-decoration:none; color:white; font-size:14px; font-weight:600; transition:background .2s ease}
-    .btn:hover{background:#5b21b6}
-
-    section{margin-top:56px}
-    h2{margin:0 0 18px; font-size:20px}
-    p.lead{margin:0 0 24px; color:#c6d7ff}
-
-    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px}
-    .proj{
-      background:var(--card); padding:16px; border-radius:12px; min-height:120px;
-      transform-origin:center; transition:transform .28s ease, box-shadow .28s ease;
-      box-shadow:0 6px 20px rgba(2,6,23,0.45); cursor:default;
+    [data-theme='dark']{
+      --accent:#0ea5a4;
+      --accent-light:#6366f1;
+      --muted:#9ca3af;
+      --bg:#0f172a;
+      --text:#f8fafc;
+      --card:#0b1220;
+      --glass:rgba(255,255,255,0.04);
+      --glass-2:rgba(255,255,255,0.02);
+      --white:#eef2ff;
     }
-    .proj:hover{transform:translateY(-8px) scale(1.02); box-shadow:0 14px 40px rgba(2,6,23,0.6)}
-    .proj h3{margin:0 0 8px; font-size:16px}
-    .proj p{margin:0; color:#c7d8ff; font-size:13px}
 
-    footer{margin:56px 0 20px; color:#9fb5ff; text-align:center; font-size:14px}
+    *{box-sizing:border-box}html,body{height:100%}
+    body{margin:0;font-family:'Open Sans',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;transition:background 0.5s,color 0.5s}
 
-    .reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease}
-    .reveal.visible{opacity:1; transform:none}
+    /* Navigation */
+    nav{position:fixed;top:0;left:0;right:0;height:var(--nav-height);background:rgba(255,255,255,0.7);backdrop-filter:blur(8px);border-bottom:1px solid var(--glass-2);z-index:999;padding:8px 0;transition:background 0.5s}
+    [data-theme='dark'] nav{background:rgba(15,23,42,0.6)}
+    nav .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:24px;padding:0 20px}
+    nav .brand{font-weight:700;font-family:'Poppins',sans-serif}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;font-family:'Poppins',sans-serif;font-weight:600;flex:1;justify-content:center}
+    nav ul li a{text-decoration:none;color:var(--text);transition:color .3s;padding:6px 8px}
+    nav ul li a:hover{color:var(--accent)}
+    nav .nav-actions{margin-left:auto;display:flex;gap:12px}
 
-    @media (max-width:720px){
-      .hero{flex-direction:column}
-      .card{width:100%}
-      nav{display:none}
-    }
+    .container{max-width:1100px;margin:calc(var(--nav-height) + 40px) auto;padding:28px}
+    header{display:flex;gap:20px;align-items:center}
+    .avatar{width:120px;height:120px;border-radius:18px;background:linear-gradient(135deg,var(--accent),var(--accent-light));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:38px;box-shadow:0 8px 30px rgba(2,6,23,.12);transform:translateZ(0);color:#fff}
+    .head-info{flex:1}
+    h1{margin:0;font-size:28px;letter-spacing:0.4px;font-family:'Poppins',sans-serif}
+    .sub{color:var(--muted);margin-top:6px}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .chip{background:var(--glass);padding:8px 12px;border-radius:999px;font-size:13px;color:var(--text);backdrop-filter:blur(6px)}
+    .theme-toggle{cursor:pointer;padding:8px 12px;border-radius:8px;background:linear-gradient(90deg,var(--accent),var(--accent-light));color:#fff;font-weight:600;transition:transform .2s}
+    .theme-toggle:hover{transform:scale(1.03)}
+
+    .grid{display:grid;grid-template-columns:1fr 340px;gap:22px;margin-top:22px}
+    .card{background:var(--card);padding:20px;border-radius:14px;box-shadow:0 6px 30px rgba(2,6,23,.08);border:1px solid var(--glass-2);transition:background 0.5s,color 0.5s}
+
+    .section{margin-bottom:18px}
+    .section h2{font-size:16px;margin:0 0 12px 0;font-family:'Poppins',sans-serif}
+    .timeline{display:flex;flex-direction:column;gap:12px}
+    .job{padding:12px;border-radius:10px;background:linear-gradient(90deg,rgba(0,0,0,0.02),transparent);transition:transform .35s cubic-bezier(.2,.9,.3,1)}
+    .job:hover{transform:translateY(-6px)}
+    .job .meta{color:var(--muted);font-size:13px}
+    .skills{display:flex;flex-direction:column;gap:14px}
+    .skill .bar{height:10px;background:var(--glass-2);border-radius:999px;overflow:hidden}
+    .skill .fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-light));border-radius:999px;transition:width 900ms cubic-bezier(.2,.9,.3,1)}
+
+    footer{margin-top:20px;text-align:center;color:var(--muted);font-size:13px}
+    @media (max-width:980px){.grid{grid-template-columns:1fr}.avatar{width:96px;height:96px}}
+    .fade-in{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s cubic-bezier(.2,.9,.3,1)}
+    .fade-in.show{opacity:1;transform:none}
+
+    /* Glassmorphic popup */
+    .popup{position:fixed;top:20px;right:20px;background:rgba(255,255,255,0.6);backdrop-filter:blur(10px);padding:16px 20px;border-radius:12px;box-shadow:0 6px 30px rgba(2,6,23,.08);display:flex;align-items:center;gap:10px;animation:fadeIn .6s ease forwards;z-index:1000}
+    [data-theme='dark'] .popup{background:rgba(15,23,42,0.6)}
+    .popup .msg{font-weight:600}
+    .popup button{background:none;border:none;color:var(--text);font-size:18px;cursor:pointer;margin-left:8px}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+
+    /* smooth scroll offset helper */
+    :target{scroll-margin-top:calc(var(--nav-height) + 12px)}
   </style>
 </head>
 <body>
-  <canvas id="particles"></canvas>
+  <nav>
+    <div class="nav-inner">
+      <div class="brand">Morel T. Ngoulla</div>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#hobbies">Hobbies</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="theme-toggle" id="navThemeToggle">Toggle</a>
+      </div>
+    </div>
+  </nav>
 
-  <div class="wrap">
-    <header>
-      <div class="brand">Ngoulla Morel</div>
-      <nav>
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
+  <div style="position:fixed;bottom:20px;right:20px;z-index:1001;">
+    <a href='Resume%20Morel%20Tiossok%20Ngoulla%20(1).pdf' download class='theme-toggle' style='text-decoration:none;'>⬇️ Download CV</a>
+  </div>
+
+  <div class="container">
+    <header class="fade-in">
+      <div class="avatar float" aria-hidden="true">MT</div>
+      <div class="head-info">
+        <h1 id="name">Morel Tiossok Ngoulla</h1>
+        <div class="sub" id="title">Software Engineer • Network Admin • IT / Systems</div>
+        <div class="chips">
+          <div class="chip">Douala, Cameroon</div>
+          <div class="chip">HND — Software Engineering</div>
+          <div class="chip">Available: Informaticien @ Groupe Magnong</div>
+        </div>
+      </div>
+      <!-- <div class="theme-toggle" id="themeToggle">Toggle Theme</div> -->
     </header>
 
-    <main>
-      <div class="hero">
-        <div class="hero-left">
-          <h1 class="title">Hi — I'm <span style="color:#fff">Ngoulla Morel</span></h1>
-          <p class="subtitle">I create automation tools, bots and clean user experiences. <span class="typewriter" id="typewriter"></span></p>
-          <a class="cta" href="https://github.com/bugs-tech?tab=repositories">See my work</a>
-        </div>
+    <div class="grid" style="margin-top:22px">
+      <main>
+        <section class="card section fade-in" id="about">
+          <h2>About</h2>
+          <p style="color:var(--muted);margin-top:6px;line-height:1.45">Passionate about technology and education with hands-on experience in software engineering, network administration, IT maintenance, and graphic design. I build practical solutions that improve learning outcomes and operational efficiency.</p>
+        </section>
 
-        <aside class="card reveal">
-          <img class="avatar" src="menu3.jpg" alt="Profile" />
-          <div style="margin-top:12px; font-weight:600">Ngoulla Morel</div>
-          <div class="small">Full-stack developer • WhatsApp / Telegram bots</div>
-          <div class="btn-group">
-            <a class="btn" href="https://whatsapp.com/channel/0029Vb5p1DHI7Be7UmI7BW0f" target="_blank">WhatsApp Channel</a>
-            <a class="btn" href="https://github.com/bugs-tech" target="_blank">GitHub</a>
+        <section class="card section fade-in" id="experience">
+          <h2>Experience</h2>
+          <div class="timeline">
+            <article class="job">
+              <strong>Informaticien — Groupe Magnong</strong>
+              <div class="meta">Jul 2024 — Present | Douala — IT solutions, network maintenance, security camera installation, social media management</div>
+            </article>
+            <article class="job">
+              <strong>Teacher — NBN Academy</strong>
+              <div class="meta">Jul 2022 — Aug 2022 | Taught programming, networking, graphic design; assessed students and delivered hands-on labs.</div>
+            </article>
+            <article class="job">
+              <strong>IT Intern — EPFA-PRO</strong>
+              <div class="meta">Feb 2022 — Mar 2022 | Designed logos & UI, contributed to internal application UI, assisted IT department tasks.</div>
+            </article>
           </div>
-        </aside>
-      </div>
+        </section>
 
-      <section id="projects" class="reveal">
-        <h2>Projects</h2>
-        <p class="lead">A few things I've shipped.</p>
+        <section class="card section fade-in" id="projects">
+          <h2>Selected Projects & Achievements</h2>
+          <div class="project"><strong>School Management System (Java)</strong><div class="meta">Developed to improve administrative workflows and communication.</div></div>
+          <div class="project" style="margin-top:8px"><strong>Pharmacy Drug Alert System (PDAS)</strong><div class="meta">System to register drugs and alert users about upcoming expirations.</div></div>
+          <div class="project" style="margin-top:8px"><strong><a href="https://github.com/bugs-tech/BUGSbot-v2" target="_blank" rel="noopener" style="color:var(--accent)">BUGSbot-v2 — WhatsApp Bot</a></strong><div class="meta">Feature-rich bot and community website.</div></div>
+          <div class="project" style="margin-top:8px"><strong><a href="https://bugstech.vercel.app/index.html" target="_blank" rel="noopener" style="color:var(--accent)">BUGStech Community Tool</a></strong><div class="meta">Community tech platform showcasing open-source projects.</div></div>
+        </section>
 
-        <div class="grid" id="grid">
-          <article class="proj reveal">
-            <h3>BUGS-BOT V1</h3>
-            <p>WhatsApp automation bot with moderation, media commands and YT downloads.</p>
-          </article>
+        <section class="card section fade-in" id="education">
+          <h2>Education & Certificates</h2>
+          <div class="timeline">
+            <div class="job"><strong>HND — Software Engineering</strong><div class="meta">Oct 2022 — Jun 2023 — Institute University of Tropics (IUGET), Douala</div></div>
+            <div class="job"><strong>Network Administration — NBN Academy</strong><div class="meta">Jul 2021 — Aug 2021 — Cisco devices, architecture, troubleshooting</div></div>
+            <div class="job"><strong>GCE A Level / O Level</strong><div class="meta">GCE O level — Jun 2018 • GCE A level — Jun 2020</div></div>
+          </div>
+        </section>
 
-          <article class="proj reveal">
-            <h3>PairGen</h3>
-            <p>Telegram tool to generate WhatsApp pairing sessions for users (Baileys).</p>
-          </article>
+        <section class="card section fade-in" id="skills">
+          <h2>Skills</h2>
+          <div class="skills">
+            <div class="skill"><div style="display:flex;justify-content:space-between"><div>Programming</div><div class="meta">75%</div></div><div class="bar"><div class="fill" data-width="75%"></div></div></div>
+            <div class="skill"><div style="display:flex;justify-content:space-between"><div>Network Administration</div><div class="meta">82%</div></div><div class="bar"><div class="fill" data-width="82%"></div></div></div>
+            <div class="skill"><div style="display:flex;justify-content:space-between"><div>Graphic Design</div><div class="meta">70%</div></div><div class="bar"><div class="fill" data-width="70%"></div></div></div>
+            <div class="skill"><div style="display:flex;justify-content:space-between"><div>System Administration</div><div class="meta">78%</div></div><div class="bar"><div class="fill" data-width="78%"></div></div></div>
+          </div>
+        </section>
 
-          <article class="proj reveal">
-            <h3>Home Network Planner</h3>
-            <p>Network layout & wiring plan for a multi-floor house with VLAN recommendations.</p>
-          </article>
+        <section class="card section fade-in" id="tools">
+          <h2>Tools & Technologies</h2>
 
-          <article class="proj reveal">
-            <h3>School Management System</h3>
-            <p>Desktop application to manage student records, grades, schedules, and staff data efficiently.</p>
-          </article>
+          <h3>Programming Languages</h3>
+          <div class="skills">
+            <div class="skill"><div style="display:flex;justify-content:space-between"><div>Java</div><div class="meta">90%</div></div><div class="bar"><div class="fill" data-width="90%"></div></div></div>
+            <div class="skill"><div style="display:flex;justify-content:space-between"><div>Python</div><div class="meta">60%</div></div><div class="bar"><div class="fill" data-width="60%"></div></div></div>
+            <div class="skill"><div style="display:flex;justify-content:space-between"><div>Node.js</div><div class="meta">70%</div></div><div class="bar"><div class="fill" data-width="70%"></div></div></div>
+            <div class="skill"><div style="display:flex;justify-content:space-between"><div>SQL</div><div class="meta">70%</div></div><div class="bar"><div class="fill" data-width="70%"></div></div></div>
+            <div class="skill"><div style="display:flex;justify-content:space-between"><div>HTML, CSS, JavaScript</div><div class="meta">50%</div></div><div class="bar"><div class="fill" data-width="50%"></div></div></div>
+          </div>
 
-          <article class="proj reveal">
-            <h3>Pharmacy Drug Alert System</h3>
-            <p>Automated system to monitor drug stock, expiration dates, and send timely alerts to pharmacists.</p>
-          </article>
+            <h3 style="margin-top:28px">Graphic Design Tools</h3>
+            <div class="skills">
+              <div class="skill"><div style="display:flex;justify-content:space-between"><div>Adobe Photoshop</div><div class="meta">80%</div></div><div class="bar"><div class="fill" data-width="80%"></div></div></div>
+              <div class="skill"><div style="display:flex;justify-content:space-between"><div>CorelDRAW</div><div class="meta">50%</div></div><div class="bar"><div class="fill" data-width="50%"></div></div></div>
+              <div class="skill"><div style="display:flex;justify-content:space-between"><div>Blender</div><div class="meta">40%</div></div><div class="bar"><div class="fill" data-width="40%"></div></div></div>
+            </div>
+        </section>
 
-          <article class="proj reveal">
-            <h3>BUGS-BOT V2 (Under Development)</h3>
-            <p>Advanced bot with real-time responses, integrations, and custom automation features.</p>
-          </article>
-			<article class="proj reveal">
-            <h3>CAMERA INSTALLATION</h3>
-            <p>Having the required skills to manage a full project camera installation</p>
-          </article>
+        <section class="card section fade-in" id="hobbies">
+          <h2>Hobbies & Qualities</h2>
+          <p class="meta">Graphic design • Programming • Cycling • Watching movies • Reading</p>
+          <p style="margin-top:8px">Core qualities: Problem-solving, Collaboration, Creativity, Adaptability, Critical thinking.</p>
+        </section>
+      </main>
+
+      <aside id="contact">
+        <div class="card fade-in" style="position:sticky;top:24px">
+          <h2>Contact</h2>
+          <div class="contact-list">
+            <div class="contact-item"><strong>Email:</strong>&nbsp;<a href="mailto:ngoulla2@gmail.com" style="color:var(--text);text-decoration:none">ngoulla2@gmail.com</a></div>
+            <div class="contact-item"><strong>Phone:</strong>&nbsp;<a href="tel:+237653871607" style="color:var(--text);text-decoration:none">+237 653 871 607</a></div>
+            <div class="contact-item"><strong>Location:</strong>&nbsp;Douala, Cameroon</div>
+            <div class="contact-item"><strong>Linked Projects:</strong>&nbsp;<a href="https://bugstech.vercel.app/index.html" target="_blank" rel="noopener" style="color:var(--accent)">Community tool</a></div>
+            <div class="contact-item"><strong>GitHub:</strong>&nbsp;<a href="https://github.com/bugs-tech/BUGSbot-v2" target="_blank" rel="noopener" style="color:var(--accent)">BUGSbot-v2</a></div>
+          </div>
         </div>
-      </section>
+      </aside>
+    </div>
 
-      <section id="about" class="reveal">
-        <h2>About</h2>
-        <p class="lead">I work mostly with Node.js, Baileys, and automation tools. I like clean UIs and reliable scripts.</p>
-      </section>
+    <footer class="fade-in">© 2025 Morel Tiossok Ngoulla — All rights reserved.</footer>
+  </div>
 
-      <section id="contact" class="reveal">
-        <h2>Contact</h2>
-        <p class="lead">
-          Call/WhatsApp: <a href="tel:+237653871607" style="color:var(--accent)">+237 653 871 607</a><br>
-          Email: <a href="mailto:ngoulla2@gmail.com" style="color:var(--accent)">ngoulla2@gmail.com</a><br>
-          GitHub: <a href="https://github.com/bugs-tech" target="_blank" style="color:var(--accent)">bugs-tech</a>
-        </p>
-      </section>
-    </main>
-
-    <footer class="reveal">Made with ♥ • © <span id="year"></span> Ngoulla Morel</footer>
+  <!-- Welcome popup (shows once per browser session) -->
+  <div id="welcomePopup" class="popup" style="display:none" role="dialog" aria-live="polite">
+    <div class="msg">👋 Welcome to Morel Tiossok Ngoulla's Portfolio!</div>
+    <button id="closePopup" aria-label="Close popup">✖</button>
   </div>
 
   <script>
-    const phrases = ["WhatsApp bots.", "Automation tools.", "Clean code."];
-    let i = 0, j = 0, forward = true;
-    const el = document.getElementById('typewriter');
-    function tick(){
-      const full = phrases[i];
-      el.textContent = full.slice(0, j);
-      if(forward){ j++; if(j>full.length){ forward=false; setTimeout(tick,800); return } }
-      else { j--; if(j<0){ forward=true; i=(i+1)%phrases.length; setTimeout(tick,240); return } }
-      setTimeout(tick, forward?80:40);
-    }
-    tick();
+    // Reveal animation
+    const reveals=document.querySelectorAll('.fade-in');
+    const io=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});
+    },{threshold:0.12});
+    reveals.forEach(r=>io.observe(r));
 
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    let W = canvas.width = innerWidth;
-    let H = canvas.height = innerHeight;
-    window.addEventListener('resize', ()=>{ W=canvas.width=innerWidth; H=canvas.height=innerHeight; init(); });
+    // Animate skill bars
+    window.addEventListener('load',()=>{
+      document.querySelectorAll('.fill').forEach(el=>{const w=el.getAttribute('data-width')||'60%';setTimeout(()=>el.style.width=w,300);});
 
-    const NUM = Math.min(80, Math.floor((W*H)/80000));
-    let particles = [];
-    function rand(min,max){ return Math.random()*(max-min)+min }
-    function init(){
-      particles = [];
-      for(let k=0;k<NUM;k++){
-        particles.push({
-          x: Math.random()*W,
-          y: Math.random()*H,
-          r: rand(0.6,2.4),
-          vx: rand(-0.25,0.25),
-          vy: rand(-0.15,0.15),
-          alpha: rand(0.08,0.26)
-        });
-      }
+      // welcome popup: show once per browser session
+      try{
+        if(!sessionStorage.getItem('seenWelcome')){
+          const popup=document.getElementById('welcomePopup');
+          popup.style.display='flex';
+        }
+      }catch(e){/* ignore storage errors */}
+    });
+
+    // close popup and mark seen in sessionStorage
+    document.getElementById('closePopup').addEventListener('click',()=>{
+      document.getElementById('welcomePopup').style.display='none';
+      try{sessionStorage.setItem('seenWelcome','1')}catch(e){}
+    });
+
+    // Theme toggle (both header and nav toggle)
+    const body=document.body;
+    const toggleHeader=document.getElementById('themeToggle');
+    const toggleNav=document.getElementById('navThemeToggle');
+    function setTheme(isDark){
+      if(isDark){body.setAttribute('data-theme','dark');}else{body.removeAttribute('data-theme');}
     }
-    function update(){
-      ctx.clearRect(0,0,W,H);
-      for(const p of particles){
-        p.x += p.vx; p.y += p.vy;
-        if(p.x< -10) p.x = W+10;
-        if(p.x> W+10) p.x = -10;
-        if(p.y< -10) p.y = H+10;
-        if(p.y> H+10) p.y = -10;
-        ctx.beginPath();
-        ctx.fillStyle = `rgba(255,255,255,${p.alpha})`;
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fill();
-      }
-      for(let a=0;a<particles.length;a++){
-        for(let b=a+1;b<particles.length;b++){
-          const p1 = particles[a], p2 = particles[b];
-          const dx = p1.x-p2.x, dy = p1.y-p2.y;
-          const d = Math.sqrt(dx*dx + dy*dy);
-          if(d<110){
-            ctx.strokeStyle = `rgba(124,58,237, ${0.02 + (0.14*(1 - d/110)).toFixed(3)})`;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(p1.x,p1.y);
-            ctx.lineTo(p2.x,p2.y);
-            ctx.stroke();
+    // initialize: light by default
+    setTheme(false);
+    toggleHeader.addEventListener('click',()=>{const dark = body.getAttribute('data-theme')==='dark';setTheme(!dark);});
+    toggleNav.addEventListener('click',()=>{const dark = body.getAttribute('data-theme')==='dark';setTheme(!dark);});
+
+    // Smooth scrolling for nav links (account for fixed nav)
+    document.querySelectorAll('nav a, .nav-inner a').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const href = a.getAttribute('href');
+        if(href && href.startsWith('#')){
+          e.preventDefault();
+          const el = document.querySelector(href);
+          if(el){
+            const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 64;
+            const top = el.getBoundingClientRect().top + window.scrollY - navH - 12;
+            window.scrollTo({top,behavior:'smooth'});
           }
         }
-      }
-      requestAnimationFrame(update);
-    }
-    init(); update();
-
-    const obs = new IntersectionObserver((entries)=>{
-      for(const e of entries){
-        if(e.isIntersecting) e.target.classList.add('visible');
-      }
-    }, {threshold:0.12});
-    document.querySelectorAll('.reveal').forEach(n=>obs.observe(n));
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', (ev)=>{
-        const id = a.getAttribute('href');
-        if(id.length>1){
-          ev.preventDefault();
-          document.querySelector(id).scrollIntoView({behavior:'smooth', block:'start'});
-        }
-      });
+      })
     });
   </script>
 </body>
-</html>( let be only one file)
+</html>
